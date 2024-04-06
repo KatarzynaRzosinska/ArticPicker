@@ -12,8 +12,8 @@ export class ImageService {
 
   getArtwork(id: number): Observable<Artwork> {
     const url = environment.urls.artwork(id);
-    return this.http.get(url).pipe(
-      map((response: any) => {
+    return this.http.get<Artwork>(url).pipe(
+      map((response: any): Artwork => {
         return {
           id: response.data.id,
           imageId: response.data.image_id,

@@ -1,0 +1,31 @@
+<form class="example-form" class="search-pill">
+  <mat-form-field class="example-full-width">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput placeholder="Search..." #query />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="serachArtist(query.value)">
+    Search
+  </button>
+</form>
+<div *ngIf="artistList">
+  <h3>Artisl List</h3>
+  <mat-list>
+    <mat-list-item
+      matRipple
+      *ngFor="let item of artistList"
+      (click)="rowClicked(item)">
+      <span>{{ item.title }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-paginator
+    [length]="pagination.total"
+    pageSize="10"
+    aria-label="Select page"
+    (page)="onPaginateChange($event)">
+  </mat-paginator>
+</div>

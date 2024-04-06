@@ -1,12 +1,11 @@
-<div>
+<div class="artwork-container">
   <button
     mat-raised-button
     id="radomArtButton"
     class="artwork-button"
     color="primary"
     [disabled]="loading"
-    (click)="getRandomArtClick()"
-  >
+    (click)="getRandomArtClick()">
     Random Art
   </button>
 
@@ -14,21 +13,21 @@
     *ngIf="loading"
     class="example-margin"
     color="accent"
-    mode="indeterminate"
-  >
+    mode="indeterminate">
   </mat-progress-bar>
 
   <mat-card class="artwork-card" *ngIf="currentArtwork">
     <mat-card-header>
-      <mat-card-title >{{ currentArtwork.title }}</mat-card-title>
-      <mat-card-subtitle >{{ currentArtwork.artistTitle }}, {{ currentArtwork.dateDisplay }}</mat-card-subtitle>
+      <mat-card-title>{{ currentArtwork.title }}</mat-card-title>
+      <mat-card-subtitle>
+        {{ currentArtwork.artistTitle }}, {{ currentArtwork.dateDisplay }}
+      </mat-card-subtitle>
     </mat-card-header>
     <img
       mat-card-image
       *ngIf="imageUrl"
       [src]="imageUrl"
-      [alt]="this.currentArtwork.altText"
-    />
+      [alt]="this.currentArtwork.altText"/>
     <mat-card-content class="artwortk-card-content">
       <h3 *ngIf="currentArtwork.typeTitle">
         <span>Type:</span>

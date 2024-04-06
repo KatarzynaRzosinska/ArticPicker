@@ -26,6 +26,26 @@ describe('ImageService', () => {
     altText: 'a lovely picture',
   };
 
+  const artworkResponse = {
+    data: {
+      id: 1,
+      image_id: 'abcd_1',
+      title: 'Test Art',
+      artist_display: 'Anna Novak',
+      artist_title: 'Anna Novak',
+      medium_display: 'paper',
+      style_title: 'artdeco',
+      inscriptions: '',
+      dimensions: '45.5 \u00d7 37.5 cm (17 15/16 \u00d7 14 13/16 in.)',
+      date_display: '20024',
+      classification_title: 'gouache',
+      is_public_domain: true,
+      place_of_origin: 'Poland',
+      artwork_type_title: 'painting',
+      thumbnail: { alt_text: 'a lovely picture' },
+    },
+  };
+
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -42,13 +62,8 @@ describe('ImageService', () => {
   });
 
   it('should return artwork', () => {
-    httpClientSpy.get.and.returnValue(of(artwork));
-    service.getArtwork(1).subscribe({
-      next: (data) => {
-        expect(data).toEqual(artwork);
-      },
-      error: () => {},
-    });
+    httpClientSpy.get.and.returnValue(of(artworkResponse));
+    service.getArtwork(1).subscribe((data) => expect(data).toEqual(artwork));
   });
 
   it('should return url of the artwork', () => {

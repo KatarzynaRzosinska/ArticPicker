@@ -1,17 +1,21 @@
+.artwork-container {
+  text-align: center;
+}
 .artwork-button {
   border-radius: 50px;
-  font-size: x-large;
+  font-size: large;
   padding: 2em;
-  margin: 2em;
+  margin: 1em;
 }
 
 .artwork-card {
-  margin: 2em 4em;
+  align-items: center;
   img {
     object-fit: cover;
     max-height: 60vh;
-    padding: 1em;
+    max-width: 80vw;
     align-self: center;
+    margin: 1em 0;
   }
   p {
     margin-top: 0.5em;
@@ -23,5 +27,12 @@
     h3 {
       font-weight: 500;
     }
+  }
+}
+@media (min-width: 768px) {
+  .artwork-button {
+    font-size: x-large;
+    padding: 2em;
+    margin: 2em;
   }
 }

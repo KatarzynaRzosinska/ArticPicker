@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ArtworkComponent } from './artwork.component';
 import { ImageService } from 'src/app/shared/services/image.service';
@@ -30,5 +30,4 @@ describe('ArtworkComponent', () => {
       'https://www.artic.edu/iiif/2/abcd_1/full/843,/0/default.jpg'
     );
   });
-
 });

@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <a routerLink="/">
+    <button mat-button aria-label="home" class="home-button">
+      <span>{{ title }}</span>
+    </button>
+  </a>
+  <a routerLink="/artwork">
+    <button mat-button aria-label="artwork">Artwork</button>
+  </a>
+  <a routerLink="/artist">
+  <button mat-button aria-label="artist">Artist</button>
+  </a>
+</mat-toolbar>
+
+<div class="layout-container">
+  <router-outlet></router-outlet>
+</div>
