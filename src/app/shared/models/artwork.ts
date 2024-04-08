@@ -3,6 +3,8 @@ export interface Artwork {
   imageId: string;
   title: string;
   artistDisplay: string;
+  artistId: number;
+  artistIds: Array<number>;
   artistTitle: string;
   mediumDisplay: string;
   styleTitle: string;

@@ -1,6 +1,6 @@
 import { ArtistService } from './artist.service';
 import { HttpClient } from '@angular/common/http';
-import { Artist, ArtistList } from '../models/artist';
+import { Artist, ArtistInfo, ArtistList } from '../models/artist';
 import { of } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -21,6 +21,14 @@ describe('ArtistService', () => {
       total_pages: 2,
       current_page: 1,
     },
+  };
+
+  const artistInfo: ArtistInfo = {
+    id: 1,
+    title: 'Claude Monet',
+    description: 'the biography text',
+    birthDate: 1840,
+    deathDate: 1926,
   };
 
   beforeEach(() =>
@@ -51,7 +59,7 @@ describe('ArtistService', () => {
     httpClientSpy.get.and.returnValue(of(artist));
     service.getArtist(1).subscribe({
       next: (data) => {
-        expect(data).toEqual(artist);
+        expect(data).toEqual(artistInfo);
       },
       error: () => {},
     });

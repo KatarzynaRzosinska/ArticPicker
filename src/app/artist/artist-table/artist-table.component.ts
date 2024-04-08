@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Subject } from 'rxjs';
 import { Artist } from 'src/app/shared/models/artist';
 import { Pagination } from 'src/app/shared/models/pagiantion';
 
@@ -13,11 +14,11 @@ export class ArtistTableComponent {
   @Output() selectedArtist = new EventEmitter<number>();
   @Input() artistList!: Array<Artist>;
   @Input() pagination!: Pagination;
+  @Input()  loading!: Subject<boolean>;
   page: number = 1;
   searchText!: string;
 
   rowClicked(row: Artist) {
-    console.log(row);
     this.selectedArtist.emit(row.id);
   }
   serachArtist(query: string) {

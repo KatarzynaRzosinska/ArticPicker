@@ -1,6 +1,7 @@
 <app-artist-table
   [artistList]="artistList"
   [pagination]="pagination"
+  [loading]="loading"
   (query)="searchArtist($event)"
   (selectedArtist)="goToArtistPage($event)">
 </app-artist-table>

@@ -11,7 +11,6 @@
 
   <mat-progress-bar
     *ngIf="loading"
-    class="example-margin"
     color="accent"
     mode="indeterminate">
   </mat-progress-bar>
@@ -42,8 +41,10 @@
         {{ currentArtwork.inscriptions }}
       </h3>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Artist Info</button>
+    <mat-card-actions *ngIf="currentArtwork?.artistId">
+      <button mat-raised-button color="primary" (click)="artistInfoClick()">
+        Artist Info
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

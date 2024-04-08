@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, EMPTY, throwError } from 'rxjs';
 import { Artwork } from 'src/app/shared/models/artwork';
 import { ImageService } from 'src/app/shared/services/image.service';
@@ -14,7 +15,7 @@ export class ArtworkComponent {
   currentArtwork: Artwork | null = null;
   loading: boolean = false;
 
-  constructor(public imageService: ImageService) {}
+  constructor(public imageService: ImageService, private router: Router) {}
 
   getRandomArt() {
     const randomId = Math.floor(Math.random() * 1000000);
@@ -24,7 +25,6 @@ export class ArtworkComponent {
       .getArtwork(randomId)
       .pipe(
         catchError((e: HttpErrorResponse) => {
-          console.log('error', e);
           if (e.status === 404) {
             this.getRandomArt();
             return EMPTY;
@@ -42,5 +42,9 @@ export class ArtworkComponent {
 
   getImage(id: string) {
     this.imageUrl = this.imageService.getImageUrl(id);
+  }
+
+  goToArtistPage(event: number) {
+    this.router.navigate(['artist', event]);
   }
 }

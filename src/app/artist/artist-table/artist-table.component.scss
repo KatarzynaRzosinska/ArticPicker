@@ -1,0 +1,17 @@
+.search-bar{
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    .search-button{
+        height: 56px;
+    }
+}
+
+.artist-list{
+    mat-list-item{
+        cursor: pointer;
+        &:hover{
+            background-color: #adbed9;
+        }
+    }
+}

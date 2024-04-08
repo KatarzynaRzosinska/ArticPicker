@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArtworkModule } from './artwork/artwork.module';
-import { ArtistModule } from './artist/artist.module';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -11,12 +9,12 @@ const routes: Routes = [
   },
   {
     path: 'artwork',
-    loadChildren: () => ArtworkModule,
+    loadChildren: () => import('./artwork/artwork.module').then(module => module.ArtworkModule)
   },
   {
     path: 'artist',
-    loadChildren: () => ArtistModule,
-  },
+    loadChildren: () => import('./artist/artist.module').then(module => module.ArtistModule)
+  }
 ];
 
 @NgModule({

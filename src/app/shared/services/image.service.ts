@@ -20,6 +20,8 @@ export class ImageService {
           title: response.data.title,
           artistDisplay: response.data.artist_display,
           artistTitle: response.data.artist_title,
+          artistId: response.data.artist_id,
+          artistIds: response.data.artist_ids,
           mediumDisplay: response.data.medium_display,
           styleTitle: response.data.style_title,
           inscriptions: response.data.inscriptions,

@@ -1,19 +1,27 @@
-<form class="example-form" class="search-pill">
-  <mat-form-field class="example-full-width">
+<form class="search-bar">
+  <mat-form-field>
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput placeholder="Search..." #query />
+    <input matInput (keyup.enter)="serachArtist(query.value)" placeholder="Search..." #query />
   </mat-form-field>
   <button
     mat-raised-button
+    class="search-button"
     color="primary"
     type="button"
     (click)="serachArtist(query.value)">
     Search
   </button>
 </form>
+
+<mat-progress-bar
+*ngIf="loading | async"
+color="accent"
+mode="indeterminate">
+</mat-progress-bar>
+
 <div *ngIf="artistList">
-  <h3>Artisl List</h3>
-  <mat-list>
+  <h3>Artist List</h3>
+  <mat-list class="artist-list">
     <mat-list-item
       matRipple
       *ngFor="let item of artistList"

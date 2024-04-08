@@ -6,7 +6,6 @@ import { ArtworkCardComponent } from './artwork-card/artwork-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
-    HttpClientModule,
     MatToolbarModule,
   ],
 })
