@@ -1,4 +1,7 @@
 # ArticPicker
+I had a problem with  the point: Dynamically register additional routes inside the lazy loading module when it is initialized.
+unfortunately we still don't have an equivalent of APP_INITIALIZER for modules.
+I tried to change the routes of module in router.config by cathing the routerEvent but I couldn't solve the problem in time.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
 

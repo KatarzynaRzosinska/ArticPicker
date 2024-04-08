@@ -1,0 +1,39 @@
+<form class="search-bar">
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput (keyup.enter)="serachArtist(query.value)" placeholder="Search..." #query />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    class="search-button"
+    color="primary"
+    type="button"
+    (click)="serachArtist(query.value)">
+    Search
+  </button>
+</form>
+
+<mat-progress-bar
+*ngIf="loading | async"
+color="accent"
+mode="indeterminate">
+</mat-progress-bar>
+
+<div *ngIf="artistList">
+  <h3>Artist List</h3>
+  <mat-list class="artist-list">
+    <mat-list-item
+      matRipple
+      *ngFor="let item of artistList"
+      (click)="rowClicked(item)">
+      <span>{{ item.title }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-paginator
+    [length]="pagination.total"
+    pageSize="10"
+    aria-label="Select page"
+    (page)="onPaginateChange($event)">
+  </mat-paginator>
+</div>

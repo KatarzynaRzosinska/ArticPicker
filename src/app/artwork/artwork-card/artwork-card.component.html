@@ -1,0 +1,50 @@
+<div class="artwork-container">
+  <button
+    mat-raised-button
+    id="radomArtButton"
+    class="artwork-button"
+    color="primary"
+    [disabled]="loading"
+    (click)="getRandomArtClick()">
+    Random Art
+  </button>
+
+  <mat-progress-bar
+    *ngIf="loading"
+    color="accent"
+    mode="indeterminate">
+  </mat-progress-bar>
+
+  <mat-card class="artwork-card" *ngIf="currentArtwork">
+    <mat-card-header>
+      <mat-card-title>{{ currentArtwork.title }}</mat-card-title>
+      <mat-card-subtitle>
+        {{ currentArtwork.artistTitle }}, {{ currentArtwork.dateDisplay }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      *ngIf="imageUrl"
+      [src]="imageUrl"
+      [alt]="this.currentArtwork.altText"/>
+    <mat-card-content class="artwortk-card-content">
+      <h3 *ngIf="currentArtwork.typeTitle">
+        <span>Type:</span>
+        {{ currentArtwork.typeTitle }}
+      </h3>
+      <h3 *ngIf="currentArtwork.mediumDisplay">
+        <span>Medium:</span>
+        {{ currentArtwork.mediumDisplay }}
+      </h3>
+      <h3 *ngIf="currentArtwork.inscriptions">
+        <span>Notes:</span>
+        {{ currentArtwork.inscriptions }}
+      </h3>
+    </mat-card-content>
+    <mat-card-actions *ngIf="currentArtwork?.artistId">
+      <button mat-raised-button color="primary" (click)="artistInfoClick()">
+        Artist Info
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

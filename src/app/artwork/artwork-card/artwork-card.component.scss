@@ -1,0 +1,38 @@
+.artwork-container {
+  text-align: center;
+}
+.artwork-button {
+  border-radius: 50px;
+  font-size: large;
+  padding: 2em;
+  margin: 1em;
+}
+
+.artwork-card {
+  align-items: center;
+  img {
+    object-fit: cover;
+    max-height: 60vh;
+    max-width: 80vw;
+    align-self: center;
+    margin: 1em 0;
+  }
+  p {
+    margin-top: 0.5em;
+  }
+  .artwortk-card-content {
+    span {
+      padding-right: 1em;
+    }
+    h3 {
+      font-weight: 500;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .artwork-button {
+    font-size: x-large;
+    padding: 2em;
+    margin: 2em;
+  }
+}
