@@ -22,7 +22,7 @@ export class ArtistTableComponent {
     this.selectedArtist.emit(row.id);
   }
   serachArtist(query: string) {
-    this.searchText = query;
+    this.searchText = query.trim().toLocaleLowerCase();
     this.sendRequest();
   }
 
