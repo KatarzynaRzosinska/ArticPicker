@@ -14,9 +14,9 @@ export class ArtistTableComponent {
   @Output() selectedArtist = new EventEmitter<number>();
   @Input() artistList!: Array<Artist>;
   @Input() pagination!: Pagination;
-  @Input()  loading!: Subject<boolean>;
+  @Input() loading!: Subject<boolean>;
+  @Input() searchText!: string;
   page: number = 1;
-  searchText!: string;
 
   rowClicked(row: Artist) {
     this.selectedArtist.emit(row.id);

@@ -1,7 +1,17 @@
-<app-artwork-card
-  (randomClicked)="getRandomArt()"
-  (artistClicked)="goToArtistPage($event)"
-  [currentArtwork]="currentArtwork"
-  [imageUrl]="imageUrl"
-  [loading]="loading">
-</app-artwork-card>
+<div class="artwork-container">
+  <button
+    mat-raised-button
+    id="radomArtButton"
+    class="artwork-button"
+    color="primary"
+    [disabled]="loading"
+    (click)="getRandomArtClick()">
+    Random Art
+  </button>
+  <mat-progress-bar
+    *ngIf="loading"
+    color="accent"
+    mode="indeterminate">
+  </mat-progress-bar>
+  <router-outlet></router-outlet>
+</div>

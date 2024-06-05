@@ -7,9 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ArtworkInfoComponent } from './artwork-info/artwork-info.component';
 
 @NgModule({
-  declarations: [ArtworkComponent, ArtworkCardComponent],
+  declarations: [ArtworkComponent, ArtworkCardComponent, ArtworkInfoComponent],
   imports: [
     CommonModule,
     ArtworkRoutingModule,

@@ -16,6 +16,7 @@ export class ArtistBrowserComponent implements OnInit, OnDestroy {
   artistList!: Array<Artist>;
   pagination!: Pagination;
   loading: Subject<boolean> = this.loadingService.isLoading;
+  searchText: string = '';
   readonly unsubsribe$ = new Subject<void>();
   constructor(
     private artistService: ArtistService,
@@ -30,7 +31,8 @@ export class ArtistBrowserComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubsribe$))
       .subscribe({
         next: (data: string) => {
-          this.searchArtist({ q: data, page: 1 });
+          this.searchText = data;
+          this.searchArtist(data, 1);
         },
         error: (error) => {
           throwError(() => new Error(error.message));
@@ -41,16 +43,24 @@ export class ArtistBrowserComponent implements OnInit, OnDestroy {
     this.router.navigate(['artist', event]);
   }
 
-  searchArtist(event: { q: string; page: number }) {
-    this.artistService.searchArtist(event.q, event.page).subscribe({
-      next: (data) => {
-        this.artistList = data.artistList;
-        this.pagination = data.pagination;
-      },
-      error: (error) => {
-        throwError(() => new Error(error.message));
-      },
-    });
+  setSearchQuery(event: { q: string; page: number }) {
+    this.comunicationService.setSearchText(event.q);
+    this.searchArtist(event.q, event.page);
+  }
+
+  searchArtist(q: string, page: number) {
+    this.artistService
+      .searchArtist(q, page)
+      .pipe(takeUntil(this.unsubsribe$))
+      .subscribe({
+        next: (data) => {
+          this.artistList = data.artistList;
+          this.pagination = data.pagination;
+        },
+        error: (error) => {
+          throwError(() => new Error(error.message));
+        },
+      });
   }
 
   ngOnDestroy(): void {

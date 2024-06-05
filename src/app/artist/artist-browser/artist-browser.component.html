@@ -2,6 +2,7 @@
   [artistList]="artistList"
   [pagination]="pagination"
   [loading]="loading"
-  (query)="searchArtist($event)"
+  [searchText]="searchText"
+  (query)="setSearchQuery($event)"
   (selectedArtist)="goToArtistPage($event)">
 </app-artist-table>

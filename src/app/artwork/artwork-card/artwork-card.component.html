@@ -1,19 +1,4 @@
-<div class="artwork-container">
-  <button
-    mat-raised-button
-    id="radomArtButton"
-    class="artwork-button"
-    color="primary"
-    [disabled]="loading"
-    (click)="getRandomArtClick()">
-    Random Art
-  </button>
 
-  <mat-progress-bar
-    *ngIf="loading"
-    color="accent"
-    mode="indeterminate">
-  </mat-progress-bar>
 
   <mat-card class="artwork-card" *ngIf="currentArtwork">
     <mat-card-header>
@@ -47,4 +32,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-</div>
+

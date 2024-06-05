@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, concatMap } from 'rxjs';
 import { ArtistInfo } from 'src/app/shared/models/artist';
 import { ArtistService } from 'src/app/shared/services/artist.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-artist-page',
@@ -13,8 +14,13 @@ export class ArtistPageComponent implements OnInit {
   artistInfo!: Observable<ArtistInfo>;
   constructor(
     private route: ActivatedRoute,
-    private artistService: ArtistService
+    private artistService: ArtistService,
+    private _location: Location
   ) {}
+
+  backClicked() {
+    this._location.back();
+  }
 
   ngOnInit(): void {
     this.artistInfo = this.route.params.pipe(

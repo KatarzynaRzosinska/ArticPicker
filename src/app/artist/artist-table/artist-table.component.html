@@ -1,7 +1,7 @@
 <form class="search-bar">
   <mat-form-field>
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput (keyup.enter)="serachArtist(query.value)" placeholder="Search..." #query />
+    <input matInput (keyup.enter)="serachArtist(query.value)" placeholder="Search..." [value]="searchText" #query />
   </mat-form-field>
   <button
     mat-raised-button
@@ -19,7 +19,7 @@ color="accent"
 mode="indeterminate">
 </mat-progress-bar>
 
-<div *ngIf="artistList">
+<div *ngIf="artistList && artistList.length > 0">
   <h3>Artist List</h3>
   <mat-list class="artist-list">
     <mat-list-item
@@ -36,4 +36,8 @@ mode="indeterminate">
     aria-label="Select page"
     (page)="onPaginateChange($event)">
   </mat-paginator>
+</div>
+
+<div *ngIf="artistList && artistList.length === 0">
+    No artist found
 </div>

@@ -10,6 +10,38 @@ import { Artwork } from '../models/artwork';
 export class ImageService {
   constructor(private http: HttpClient) {}
 
+
+  getRandomArtwork(): Observable<number> {
+    let artworkRequest = {
+      "resources": "artworks",
+      "fields": [
+        "id",
+      ],
+      "boost": false,
+      "limit": 1,
+      "query": {
+        "function_score": {
+          "query": {
+            "constant_score" : {
+              "filter": {
+                "exists": {
+                  "field": "image_id"
+                }
+              }
+            }
+          },
+          "boost_mode": "replace",
+          "random_score": {
+            "field": "id"
+          }
+        }
+      }
+    };
+    const url =  environment.urls.search;
+    return this.http.post<number>(url, artworkRequest);
+
+  }
+
   getArtwork(id: number): Observable<Artwork> {
     const url = environment.urls.artwork(id);
     return this.http.get<Artwork>(url).pipe(
