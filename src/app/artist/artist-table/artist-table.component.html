@@ -13,13 +13,14 @@
   </button>
 </form>
 
-<mat-progress-bar
-*ngIf="loading | async"
-color="accent"
-mode="indeterminate">
-</mat-progress-bar>
+@if (loading | async) {
+  <mat-progress-bar
+  color="accent"
+  mode="indeterminate">
+  </mat-progress-bar>
+}
 
-<div *ngIf="artistList && artistList.length > 0">
+@if (artistList && artistList.length > 0) {
   <h3>Artist List</h3>
   <mat-list class="artist-list">
     <mat-list-item
@@ -36,8 +37,8 @@ mode="indeterminate">
     aria-label="Select page"
     (page)="onPaginateChange($event)">
   </mat-paginator>
-</div>
+}
 
-<div *ngIf="artistList && artistList.length === 0">
-    No artist found
-</div>
+@if (artistList && artistList.length === 0) {
+  No artist found
+}

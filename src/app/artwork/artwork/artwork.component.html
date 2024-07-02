@@ -8,10 +8,11 @@
     (click)="getRandomArtClick()">
     Random Art
   </button>
-  <mat-progress-bar
-    *ngIf="loading"
+  @if (loading) {
+    <mat-progress-bar
     color="accent"
     mode="indeterminate">
-  </mat-progress-bar>
+    </mat-progress-bar>
+  }
   <router-outlet></router-outlet>
 </div>
