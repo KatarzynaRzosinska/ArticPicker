@@ -15,7 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ArtistCardComponent } from './artist-card/artist-card.component';
 import { MatCardModule } from '@angular/material/card';
-import { ArtistGroupComponent } from './artist-group/artist-group.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
@@ -23,8 +22,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ArtistPageComponent,
     ArtistBrowserComponent,
     ArtistTableComponent,
-    ArtistCardComponent,
-    ArtistGroupComponent,
+    ArtistCardComponent
   ],
   imports: [
     CommonModule,
